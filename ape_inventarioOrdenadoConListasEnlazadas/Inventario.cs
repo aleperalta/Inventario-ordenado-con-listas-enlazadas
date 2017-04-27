@@ -80,10 +80,19 @@ namespace ape_inventarioOrdenadoConListasEnlazadas
             return encontrado;
         }
 
-        public void eliminar()
+        public bool eliminar(int codigoP)
         {
-            anterior.siguiente = encontrado.siguiente;
-            //encontrado = null;
+            if (buscar(codigoP) != null)
+            {
+                if (encontrado == primero)
+                    primero = primero.siguiente;
+                else
+                    anterior.siguiente = encontrado.siguiente;
+
+                return true;
+            }
+            else
+                return false;
         }
 
         public string mostrar()

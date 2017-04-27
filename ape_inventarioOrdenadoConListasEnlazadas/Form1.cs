@@ -45,15 +45,16 @@ namespace ape_inventarioOrdenadoConListasEnlazadas
             if (txtCodigo.Text == "")
                 MessageBox.Show("Favor de escribir el código del producto a eliminar.");
             else
-                if (inventario.buscar(Convert.ToInt16(txtCodigo.Text)) == null)
-                MessageBox.Show("El producto no existe.");
-            else
             {
-                inventario.eliminar();
-                MessageBox.Show("Producto eliminado.");
-                txtReporte.Text = inventario.mostrar();
+                if (inventario.eliminar(Convert.ToInt16(txtCodigo.Text)))
+                {
+                    MessageBox.Show("Producto eliminado.");
+                    txtReporte.Text = inventario.mostrar();
+                }
+                else
+                    MessageBox.Show("El producto no existe.");
             }
-
+            
             limpiarTXT();
         }
 
