@@ -97,15 +97,26 @@ namespace ape_inventarioOrdenadoConListasEnlazadas
 
         public string mostrar()
         {
+            //string vProducto = "";
+            //temp = primero;
+
+            //while (temp != null)
+            //{
+            //    vProducto += temp.ToString() + Environment.NewLine;
+            //    temp = temp.siguiente;
+            //}
+
+            return mostrarInverso(primero);
+        }
+
+        private string mostrarInverso(Producto temp)
+        {
             string vProducto = "";
-            temp = primero;
 
-            while (temp != null)
-            {
-                vProducto += temp.ToString() + Environment.NewLine;
-                temp = temp.siguiente;
-            }
+            if (temp.siguiente != null)
+                vProducto = mostrarInverso(temp.siguiente);
 
+            vProducto += temp.ToString() + Environment.NewLine;
             return vProducto;
         }
     }
